@@ -34,7 +34,7 @@
 
 <img src="./img/数据流向.jpg" title="" alt="" width="900">
 
-<font color="red">注：详细流程请见系统操作说明书及演示视频</font>
+<font color="red">注：详细流程请见系统操作说明书及[演示视频](https://www.bilibili.com/video/BV15Y411N77c/?vd_source=eeb1b759fed37a9c9c11140fbcf766eb)</font>
 
 ## 数据来源
 
