@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../static/js/jquery-3.5.1.min.js"></script>
+		<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+		<script src="../static/js/bootstrap.min.js"></script>
+		<script src="../static/js/echarts.js"></script>
+		<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.box1{
+			position: relative;
+			width: 70%;
+			height: 70%;
+			margin: 0 auto;
+			top: 2%;
+			/* background-color: #0056B3; */
+		}
+		.search{
+			position: relative;
+			height: 8%;
+			width: 20%;
+			margin-left: 15%;
+			background-color: #55ffff;
+			max-width: 31.25rem;
+		}
+		</style>
+	</head>
+	<body>
+		<h1 align="center" style="margin: 0; line-height:3.75rem">h1</h1>
+		<div class="search">
+			
+		</div>
+		
+		<div class="box1" id="ech1">
+			
+		</div>
+		
+		
+		<script>
+			
+			var chartDom = document.getElementById('ech1');
+			var myChart = echarts.init(chartDom);
+			var option;
+			
+			option = {
+			  xAxis: {
+			    type: 'category',
+			    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+			  },
+			  yAxis: {
+			    type: 'value'
+			  },
+			  series: [
+			    {
+			      data: [150, 230, 224, 218, 135, 147, 260],
+			      type: 'line'
+			    }
+			  ]
+			};
+			
+			option && myChart.setOption(option);
+
+			
+		</script>
+	</body>
+</html>

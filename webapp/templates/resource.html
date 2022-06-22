@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>resources</title>
+		<script src="../static/js/jquery-3.5.1.min.js"></script>
+		<script src="../static/js/echarts.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+		<link rel="stylesheet" href="../static/css/resource.css" />
+
+	</head>
+	<body>
+		<div class="box-left">
+			<div class="box-table">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">属性名称</th>
+			      <th scope="col">详细信息</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				  {%for item in result%}
+			    <tr>
+			      <td>{{item.name}}</td>
+			      <td>{{item.value}}</td>
+			    </tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+			</div>
+			
+			<div class="box-b" id="ch3">
+				
+			</div>
+		</div>
+		
+		<div class="box-right">
+			<div class="box-t" id="ch1">
+				
+			</div>
+			
+			<div class="box-b" id="ch2">
+				
+			</div>
+		</div>
+
+		<script src="../static/js/resources.js" type="application/javascript"></script>
+	</body>
+
+
+
+</html>

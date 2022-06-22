@@ -1,0 +1,12 @@
+# django.db.utils.OperationalError- no such table- django_session : python manage.py  migrate
+
+# hadoop地址和端口
+hadoop:
+  host: 192.168.66.153
+  port: 50070
+
+# 网页主页头部信息展示
+head:
+  visual: ture
+  text: 广西科技师范学院2022届本科毕业设计
+

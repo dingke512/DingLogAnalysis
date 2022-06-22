@@ -1,0 +1,187 @@
+body,html{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+h2{
+	font-family: 'Times New Roman', Times, serif;
+	margin: 0 1.5%;
+	color: #e1e2ff;
+	text-align: center;
+	text-shadow:0px 0px 8px #fff, 0px 0px 42px #9a42ff, 0px 0px 72px #8c98ff,0px 0px 150px #b5e2ff;
+	height: 4%;
+}
+h3,h4,h6{
+	font-family: 'Times New Roman', Times, serif;
+	color: #d8e5ff;
+	text-align: center;
+	text-shadow:0px 0px 8px #fff, 0px 0px 42px #9a42ff, 0px 0px 72px #8c98ff,0px 0px 150px #b5e2ff;	
+}
+
+.box-left{
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 96%;
+/* 	background-color: #007BFF;
+	 */
+}
+
+.box-center{
+	position: relative;
+	float: left;
+	width: 40%;
+	height: 96%;
+/* 	background-color: #117A8B; */
+	
+}
+
+
+.box-right{
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 96%;
+/* 	background-color: #007BFF; */
+	
+}
+
+.box-3-1{
+	position: relative;
+	height: 32%;
+	width: 97%;
+	margin: 1.5% 1.5%;
+
+	/* 设置四个角落边框 */
+	background: linear-gradient(to left, #c9d8ff,  #c9d8ff) left top no-repeat, 
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) left top no-repeat, 
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right top no-repeat,
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) right top no-repeat, 
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) left bottom no-repeat,
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) left bottom no-repeat,
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right bottom no-repeat,
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right bottom no-repeat;
+	background-size: 3px 20px, 20px 3px, 3px 20px, 20px 3px; 
+	
+	
+	opacity: 0.9;
+	background-color: rgba(12,26,103,1);
+}
+
+.box-2-1{
+	position: relative;
+	height: 48%;
+	width: 97%;
+	margin: 1.5% 1.5%;
+	
+	background: linear-gradient(to left, #c9d8ff,  #c9d8ff) left top no-repeat,
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) left top no-repeat, 
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right top no-repeat,
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) right top no-repeat, 
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) left bottom no-repeat,
+				linear-gradient(to bottom,  #c9d8ff,  #c9d8ff) left bottom no-repeat,
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right bottom no-repeat,
+				linear-gradient(to left,  #c9d8ff,  #c9d8ff) right bottom no-repeat;
+	background-size: 3px 30px, 30px 3px, 3px 30px, 30px 3px; 
+	background-color: rgba(6,26,103,1);
+	opacity: 0.9;
+	
+}
+
+
+.table-box{
+	position: relative;
+	height: 88%;
+	width: 98%;
+	margin: 0 1%;
+	background-color: #474187;
+	overflow: hidden;
+	
+}
+
+#day{
+	position: relative;
+	width: 70%;
+	height: 20%;
+	font-size: 30px;
+	background: linear-gradient(to right bottom, red, #00FF00);
+	-webkit-background-clip: text;
+	color: transparent;
+	margin: 0 auto;
+	padding: 0.625rem;
+	text-align: center;
+}
+
+#nowtime{
+	position: relative;
+	width: 50%;
+	height: 20%;
+	font-size: 30px;
+	background: linear-gradient(to right bottom, #8277ff, #ff5f2f);
+	-webkit-background-clip: text;
+	color: transparent;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+.tablebox {
+	height: 90%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	background-color: rgba(6,26,103,1);
+}
+.tbl-header {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+		
+.tbl-body {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.tablebox table {
+	width: 100%;
+	}
+.tablebox table th,
+.tablebox table td {
+	font-size: 20px;
+	color: #7ca6f4;
+	line-height: 45px;
+	text-align: center;
+	max-width: 10rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+		
+.tablebox table tr th {
+	background-color: #1f1f9c;
+	cursor: pointer;
+}
+		
+.tablebox table tr td {
+	background-color: transparent;
+	}
+		
+.tbl-body tr:nth-child(even) td,
+.tbl-body1 tr:nth-child(even) td {
+	background-color: rgba(31, 31, 156, .5);
+
+}
+		
+.tablebox table tr td span,
+.tablebox table tr td span {
+	font-size: 24px;
+}
+
