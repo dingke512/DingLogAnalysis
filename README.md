@@ -81,6 +81,7 @@
 ### 实时计算
 
 1、启动spark streaming ：IDEA打开`StreamJob` 需要修改kafka的地址和端口
+2、打包jar使用 `spark-submit`提交Job
 
 ## 离线分析
 
