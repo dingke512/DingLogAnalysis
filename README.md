@@ -9,10 +9,10 @@
 ```yacas
 ├─flume-conf       // Flume配置文件
 ├─simulate         // 日志模拟文件
-├─ml-job		  // 机器学习代码
+├─ml-job	         // 机器学习代码
 ├─spark-job        // spark 实时计算代码和离线分析代码
-├─sql			  // 数据库结构及数据sql文件
-└─webapp		  // web服务
+├─sql			         // 数据库结构及数据sql文件
+└─webapp		       // web服务
 ```
 
 
@@ -64,7 +64,7 @@
 
 ​	`kafka-topics.sg --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic weblog-sink-topic`
 
-​	 查看`kafka topic`：
+​	 查看`kafka topic`：`kafka-topics.sh --zookeeper localhost:2181 --list`
 
 ​	
 
@@ -76,7 +76,7 @@
 
 5、启动Redis
 
-​	  windows：`redis-server.exe redis.windows.conf`
+​	  windows：`redis-server redis.windows.conf`
 
 ### 实时计算
 
