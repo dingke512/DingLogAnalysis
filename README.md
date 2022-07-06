@@ -7,13 +7,13 @@
 该系统使用Flume将用户的实时搜索日志数据采集到Kafka，再使用Flume拉取Kafka将采集的源数据存储到HDFS，同时使用Spark Streaming消费Kafka进行计算分析，对于离线数据使用Spark SQL分析计算，以及使用机器学习等手段挖掘将计算结果存储MySQL，使用django进行web系统开发，使用Echarts对计算结果进行可视化展示。
 
 ```yacas
-├─flume-conf       // Flume配置文件
-├─simulate         // 日志模拟文件
-├─ml-job	         // 机器学习代码
-├─spark-job        // spark 实时计算代码和离线分析代码
-├─sql			         // 数据库结构及数据sql文件
-├─myapp            //	springboot版本
-└─webapp		       // djagno 版本
+├─flume-conf     // Flume配置文件
+├─simulate       // 日志模拟文件
+├─ml-job	       // 机器学习代码
+├─spark-job      // spark 实时计算代码和离线分析代码
+├─sql			       // 数据库结构及数据sql文件
+├─myapp          //	springboot版本
+└─webapp		     // djagno 版本
 ```
 
 
