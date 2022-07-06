@@ -1,0 +1,21 @@
+.form-box{
+	position: relative;
+	width: 70%;
+	height: 80%;
+	margin: 10% auto;
+	color: #ffffff;
+}
+
+.text-box{
+	position: relative;
+	width: 90%;
+	height: 92%;
+	margin: 3%;
+	color: #ffffff;	
+	font-size: 1.4375rem;
+	/* background-color: #117A8B; */
+	line-height: 2.5rem;
+	
+}
+
+

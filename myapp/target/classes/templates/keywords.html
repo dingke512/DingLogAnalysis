@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>keywords</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/keywords.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/echarts.js}"></script>
+		<script th:src="@{/js/echarts-wordcloud.js}"></script>
+		
+	</head>
+	<body style="background-color: #33414b;">
+	
+	<h2 class="title">搜索内容分析</h2>
+	
+	<div class = "box-top">
+		<div class="box-4-1">
+			<form class="form-box" action="/offline/ana_keywords" method="get">
+				<hr/>
+			  <div class="form-group">
+			    <label >查询日期</label>
+			    <input type="date" class="form-control" name="date" value="2006-08-01"/>
+			  </div>
+			  <div class="form-group">
+			    <label >选择topk</label>
+			    <input type="number" class="form-control" name="n" value="20" max="20"/>
+			  </div>
+			  <br/>
+			  <div class="form-group">
+			    <button class="btn btn-primary" >生成</button>
+			  </div>
+			  <hr/>
+			</form>
+			
+		</div>
+		<div class="box-4-1" id="ech2">
+
+		</div>
+		
+		<div class="box-2-1">
+			<h5 class="top-title">搜索高频词 TopK</h5>
+			<div class="tablebox">
+			        <!-- 表头容器 -->
+			        <div class="tbl-header">
+			            <table border="0" cellspacing="0" cellpadding="0">
+			                <thead>
+			                    <tr>
+			                        <th>排名</th>
+			                        <th>搜索词</th>
+			                        <th>搜索次数</th>
+			            
+			                    </tr>
+			                </thead>
+			                <tbody style="opacity:0;"></tbody>
+			            </table>
+			        </div>
+			        <!-- 表格内容容器-->
+			        <div class="tbl-body">
+			            <table border="0" cellspacing="0" cellpadding="0">
+			                <thead>
+			                    <tr>
+												   <th>排名</th>
+												   <th>用户id</th>
+												   <th>搜索次数</th>
+			                    </tr>
+			                </thead>
+			                <tbody></tbody>
+			            </table>
+			        </div>
+			</div>
+			
+			
+		</div>
+	
+	
+	</div>
+	
+	<div class = "box-bottom">
+		<div class="box-4-1" id="ech6">
+			
+		</div>
+		<div class="box-4-1" id="ech3">
+			
+		</div>
+		
+		<div class="box-4-1" id="ech4">
+			
+		</div>
+		
+		<div class="box-4-1" id="ech5">
+			
+		</div>
+		
+	
+		
+	
+	</div>
+
+	<script th:src="@{/js/keyword.js}"></script>
+
+	<script>
+		function roll_word(topk){
+			var MyMarhq = '';
+			clearInterval(MyMarhq);
+			$('.tbl-body tbody').empty();
+			$('.tbl-header tbody').empty();
+			var str = '';
+			var Items = topk;
+			$.each(Items,function (i, item) {
+				str = '<tr>'+
+						'<td>'+(i+1)+'</td>'+
+						'<td>'+item.keyword+'</td>'+
+						'<td>'+item.count+'</td>'+
+						'</tr>'
+
+				$('.tbl-body tbody').append(str);
+				$('.tbl-header tbody').append(str);
+			});
+
+			if(Items.length > 5){
+				$('.tbl-body tbody').html($('.tbl-body tbody').html()+$('.tbl-body tbody').html());
+				$('.tbl-body').css('top', '0');
+				var tblTop = 0;
+				var speedhq = 50; // 数值越大越慢
+				var outerHeight = $('.tbl-body tbody').find("tr").outerHeight();
+				function Marqueehq(){
+					if(tblTop <= -outerHeight*Items.length){
+						tblTop = 0;
+					} else {
+						tblTop -= 1;
+					}
+					$('.tbl-body').css('top', tblTop+'px');
+				}
+
+				MyMarhq = setInterval(Marqueehq,speedhq);
+
+				// 鼠标移上去取消事件
+				$(".tbl-header tbody").hover(function (){
+					clearInterval(MyMarhq);
+				},function (){
+					clearInterval(MyMarhq);
+					MyMarhq = setInterval(Marqueehq,speedhq);
+				})
+
+			}
+		}
+	</script>
+	<script>
+		function dataload(data){
+			$.get("/offline/ana_keywords/data",data,function(result){
+				var topk =result.word_top;
+				var word_count=result.word_count;
+				var word_avg=result.word_avg;
+				var total=result.total;
+				var key_arr=result.key_arr;
+				var avg_length=result.avg_length;
+
+				roll_word(topk);
+				visual_keyword(word_count,key_arr,word_avg,total,avg_length);
+
+			});
+		}
+
+		$(document).ready(function () {
+			var date = [[${date}]];
+			var n = [[${n}]];
+			var data ={"date":date,"n":n};
+			console.log(data)
+			dataload(data);
+		});
+
+	</script>
+
+	</body>
+</html>

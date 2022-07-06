@@ -1,0 +1,188 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.title{
+	position: relative;
+	font-family: 'Times New Roman', Times, serif;
+	margin: 0 1.5%;
+	color: #d1cdff;
+	text-shadow:0px 0px 8px #fff, 0px 0px 42px #9a42ff, 0px 0px 72px #8c98ff,0px 0px 150px #b5e2ff;
+	padding-left: 3%;
+	height: 5%;
+	
+}
+/* box 1  */
+.box-top{
+	position:relative;
+	width: 100%;
+	height: 47%;
+/* 	background-color: #00AAFF; */
+	display: inline-block;
+	
+}
+
+.box-bottom{
+	width: 100%;
+	height: 47%;
+	/* background-color: #084659; */
+	bottom: 0;
+	
+}
+/* box 1/3  */
+.box-3-1{
+	position: relative;
+	float: left;
+	width: 32.3%;
+	height: 98%;
+	margin: 0.3% 0.5%;
+	background-color: rgba(6,26,103,1);;
+}
+/* box 1/2  */
+.box-2-1{
+	position: relative;
+	float: left;
+	width: 49%;
+	height: 96%;
+	margin: 0.5% 0.5%;
+	background-color: rgba(6,26,103,1);
+	
+}
+/* box 1/4  */
+.box-4-1{
+	position: relative;
+	float: left;
+	width: 24%;
+	height: 96%;
+	margin: 0.5% 0.5%;
+	background-color: rgba(12,17,42,1);
+	border-radius: 0.3125rem;
+	
+}
+
+.box-4-3{
+	position: relative;
+	float: left;
+	width: 74%;
+	height: 96%;
+	margin: 0.5% 0.5%;
+	background-color: rgba(6,26,103,1);
+	border-radius: 0.3125rem;
+	
+}
+/* box 1/1  */
+.box-1-1{
+	position: relative;
+	float: left;
+	width: 99%;
+	height: 96%;
+	margin: 0.5% 0.5%;
+	background-color: #17A2B8;
+	
+}
+
+/* box 1/3   三列  */
+.box-1-3{
+	position: relative;
+	width: 96%;
+	height: 31%;
+	margin-top: 2%;
+	margin-left: 2%;
+	background-color: #dbdeff;
+	border-radius: 0.3125rem;
+	padding: 2%;
+	
+}
+
+
+.form-box{
+	position: relative;
+	width: 70%;
+	height: 80%;
+	margin: 10% auto;
+	color: #ffffff;
+}
+
+
+.overview{
+	position: relative;
+	width: 94%;
+	height: 94%;
+	margin: 3%;
+	line-height: 3.125rem;
+	font-size: 1.25rem;
+	color: #FFFFFF;
+	font-family: "宋体";
+}
+
+
+
+.tablebox {
+	height: 90%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	background-color: rgba(6,26,103,1);
+}
+.tbl-header {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+		
+.tbl-body {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.tablebox table {
+	width: 100%;
+	}
+.tablebox table th,
+.tablebox table td {
+	font-size: 20px;
+	color: #7ca6f4;
+	line-height: 45px;
+	text-align: center;
+	max-width: 10rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+		
+.tablebox table tr th {
+	background-color: #1f1f9c;
+	cursor: pointer;
+}
+		
+.tablebox table tr td {
+	background-color: transparent;
+	}
+		
+.tbl-body tr:nth-child(even) td,
+.tbl-body1 tr:nth-child(even) td {
+	background-color: rgba(31, 31, 156, .5);
+
+}
+		
+.tablebox table tr td span,
+.tablebox table tr td span {
+	font-size: 24px;
+}
+
+
+.top-title{
+	height: 8%;
+	position: relative; 
+	font-size:1.5625rem;
+	font-family: "宋体";
+	padding-left: 0.625rem;
+	color: #FFFFFF;"
+}

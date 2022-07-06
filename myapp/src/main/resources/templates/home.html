@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>丁丁大数据</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+		<script type="text/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<script type="application/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+		<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	</head>
+	<body>
+		<div id="left-nav" >
+			<!-- <div class="left-nav-logo">
+				<img src="../static/images/my.png" />
+			</div> -->
+			<div class="left-title"><b>Ding Data Analysis System</b></div>
+			<br>
+			<div id="btn" style="font-size: 1.875rem;"><i class="bi bi-box-arrow-left"></i></div>
+			<br>
+		
+			<ul id="accordion" class="accordion">
+				
+				<li>
+				    <div class="link">概况</div>
+				    <ul class="submenu">
+				        <li><a href="/welcome" target="child">Powder</a></li>
+				
+				    </ul>
+				</li>
+				
+				
+			    <li>
+			        <div class="link">大数据实时监控</div>
+			        <ul class="submenu">
+			            <li><a href="/streaming" target="child">实时监控</a></li>
+		<!-- 	            <li><a href="#">Powder</a></li> -->
+
+			        </ul>
+			    </li>
+				
+				
+				<li>
+				    <div class="link"><i class="fa fa-mobile"></i>离线数据分析<i class="fa fa-chevron-down"></i></div>
+				    <ul class="submenu">
+						<li><a href="/offline/ana_trend" target="child">整体趋势</a></li>
+						<li><a href="/offline/ana_user" target="child">用户搜索分析</a></li>
+				        <li><a href="/offline/ana_url"  target="child">点击页面分析</a></li>
+				        <li><a href="/offline/ana_keywords" target="child">查询词分析</a></li>
+						<li><a href="/offline/lda"  target="child">LDA主题分析</a></li>
+				    </ul>
+				</li>
+				
+				
+			    <li>
+			        <div class="link">资源监控</div>
+			        <ul class="submenu">
+			            <li><a href="/resources/local" target="child">本机资源</a></li>
+						<li><a th:href="${hadoop}" target="child">Hadoop</a></li>
+			         
+			        </ul>
+			    </li>
+				
+				<li>
+				    <div class="link">用户管理</div>
+				    <ul class="submenu">
+				        <li><a href="Admin/user/manager" target="child">用户管理</a></li>
+				     
+				    </ul>
+				</li>
+				
+				<li>
+				    <div class="link">设置</div>
+				    <ul class="submenu">
+				        <li><a href="/user/setting" target="child">账号设置</a></li>
+						<li><a href="/user/updatepwd" target="child">密码修改</a></li>
+				    </ul>
+				</li>
+			    
+			</ul>
+			
+		</div>
+		
+		<div id="btnb" ><i class="bi bi-list-ul"></i></div>
+		
+		<div id="right-box">
+			
+			<div id="head-nav">
+				
+		<!-- 		<form class="search-form" action="/search_page" method="get">
+					<input type="text">
+					<button class="btn btn-outline-success" type="submit">搜索</button>
+
+				</form> -->
+<!--				<span style="height: 80%; margin: 0.625rem; float: left;">{{text}}</span>-->
+				
+				<div class="username">
+					
+					<div class="btn-group">
+					  <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-expanded="false" th:text="${username}">
+					  </button>
+					  <div class="dropdown-menu">
+					    <a class="dropdown-item" href="/user/setting" target="child">账号设置</a>
+					   <a class="dropdown-item" href="#">修改密码</a>
+					    <a class="dropdown-item" href="/logout">退出</a>
+					  </div>
+					</div>
+				</div>
+				
+				<div id="user-image" >
+					
+				</div>
+				
+
+			</div>
+				
+
+			<iframe  id="child-page"  th:src="@{/welcome}" name="child" ></iframe>
+			
+			
+		</div>
+
+		<script th:inline="javascript">
+
+			$(document).ready(function(){
+				var img = [[${image}]];
+				console.log(img);
+				$("#user-image").css("background-image","url('"+img+"')");
+			});
+
+
+		</script>
+
+		<script type="text/javascript" th:src="@{/js/home.js}">
+		</script>
+		 
+	
+	</body>
+	
+
+
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>用户管理</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/usmanage.css}" />
+		<script type="application/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<script type="application/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	</head>
+	<body style="background-color: #8082ac;">
+		<h2 class="title">用户管理</h2>
+		<div class="info-box" >
+			<form class="search-box" action="/Admin/user/queryby" >
+				账号:
+				<div class="form-search">
+					<input type="text" name="userid" class="form-control input-text" />
+				</div>
+				手机号:
+				<div class="form-search">
+					<input type="text" name="phone" class="form-control input-text" />
+				</div>
+				权限:
+				<div class="form-search">
+					<select class="form-control input-text" name="priority">
+						<option ></option>
+						<option value="-1">异常或封停</option>
+						<option value="0">普通用户</option>
+						<option value="1">管理员</option>
+					</select>
+
+				</div>
+				<button class="btn btn-primary" type="submit">搜索</button>
+
+			</form>
+			
+			<div class="table-box">
+				<!-- table-dark -->
+				<table class="table table-bordered " style="background-color: #FFFFFF;">
+				  <thead>
+				    <tr>
+				      <th scope="col">序号</th>
+					  <th scope="col">账号</th>
+					  <th scope="col">密码</th>
+				      <th scope="col">昵称</th>
+					  <th scope="col">性别</th>
+				      <th scope="col">年龄</th>
+					  <th scope="col">手机号</th>
+					  <th scope="col">用户头像</th>
+					  <th scope="col">权限</th>
+					  <th scope="col"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmodel">添加</button></th> 
+				    </tr>
+				  </thead>
+				  <tbody id="t-body">
+
+				    <tr th:each="user:${user_list}">
+				      <th scope="row" th:text="${userStat.index+1}"></th>
+					  <td th:text="${user.userid}"></td>
+					  <td th:text="${user.password}"></td>
+				      <td th:text="${user.username}"></td>
+					  <td th:text="${user.gender}==0?'女':'男'"></td>
+				      <td th:text="${user.age}"></td>
+					  <td th:text="${user.phone}"></td>
+					  <td><img th:src="'/images/'+${user.image}"></td>
+					  <td th:switch="${user.priority}">
+						  <span th:case="1">管理员</span>
+						  <span th:case="0">普通用户</span>
+						  <span th:case="-1">封号/异常</span>
+
+					  </td>
+
+					  <td>
+						<button type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#updatemodel"
+						th:userid="${user.userid}" th:username ="${user.username}" th:password="${user.password}" th:gender="${user.gender}" th:age="${user.age}" th:phone = "${user.phone}" th:priority="${user.priority}">修改</button>
+						<button type="button" class="btn btn-danger del" data-toggle="modal" data-target="#deletemodel" th:userid="${user.userid}">删除</button>
+					  </td>
+				    </tr>
+
+					<br/>
+				  </tbody>
+				</table>
+				
+			</div>		
+			
+		</div>
+		
+		
+		<!-- Delete Modal -->
+		<div class="modal fade" id="deletemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" >用户删除</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		       确认删除用户<span id="duid" style="color: #ff2036;"></span>吗 ?
+		      </div>
+		      <div class="modal-footer"> 
+		        <button type="button" class="btn btn-primary" id="delbtn">确定</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<!-- Add Modal -->
+		<div class="modal fade" id="addmodel" tabindex="-1"  aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" >添加新用户</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		          <form  action="/Admin/user/add"  method="post">
+		                      <div class="modal-body">
+		                          <div class="form-group">
+		                              <label  class="control-label">昵称:</label>
+		                              <input  type="text" name="username" class="form-control"  required="required" placeholder="昵称">
+		                          </div>
+		                          <div class="form-group">
+		                              <label  class="control-label">年龄:</label>
+		                              <input  type="text" name="age" class="form-control"   required="required" placeholder="年龄(age)">
+		                          </div>
+								  
+		                          <div class="form-group">
+		                              <label  class="control-label">性别:</label>
+		                            <select class="show-tick form-control"   data-live-search="true" name="gender">
+		                                <option class="form-control" value="1">男</option>
+		                                <option class="form-control" value="0">女</option>
+		                            </select>
+		                          </div>
+
+						
+		                          <div class="form-group">
+		                              <label  class="control-label">手机号:</label>
+		                              <input type="text" name="phone" class="form-control"  required="required" placeholder="11位电话号码" maxlength="11">
+		                          </div>
+								  
+								  <div class="form-group">
+								      <label  class="control-label">权限:</label>
+								      <select class="show-tick form-control"   data-live-search="true" name="priority"  required="required">
+								          <option class="form-control" value="0">普通用户</option>
+								          <option class="form-control" value="1">管理员</option>
+								          <option class="form-control" value="-1">封停</option>
+								      </select>
+								  </div>
+								  
+								  
+								  <div class="form-group">
+								      <label  class="control-label">初始密码:</label>
+								      <input type="password"   name="password" class="form-control"  placeholder="密码"  required="required" >
+								  </div>
+		      
+		                      </div>
+		                      <div class="modal-footer">
+		                          <button type="submit" class="btn btn-primary" >添加</button>
+		                          <button type="button" class="btn btn-secondary" data-dismiss="modal" >取消</button>
+		                      </div>
+		                  </form>
+			   
+		      </div>
+
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<!-- update model -->
+		
+		<div class="modal fade" id="updatemodel" tabindex="-1"  aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" >修改</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body" >
+		          <form  action="/Admin/user/update"  method="post" >
+		                      <div class="modal-body">
+								  <div class="form-group">
+									  <label  class="control-label">账号:</label>
+									  <input  type="text" name="userid" class="form-control"  readonly="readonly" id="userid">
+								  </div>
+		                          <div class="form-group">
+		                              <label  class="control-label">昵称:</label>
+		                              <input  type="text" name="username" class="form-control"  id="username">
+		                          </div>
+								  
+		                          <div class="form-group">
+		                              <label  class="control-label">性别:</label>
+										<select class="show-tick form-control"   data-live-search="true" name="gender" id="gender">
+											<option class="form-control" value="1">男</option>
+											<option class="form-control" value="0">女</option>
+										</select>
+		                          </div>
+								  
+								  <div class="form-group">
+								      <label  class="control-label">年龄:</label>
+								      <input  type="text" name="age" class="form-control"  id="age">
+								  </div>
+						
+		                          <div class="form-group">
+		                              <label  class="control-label">手机号:</label>
+		                              <input type="text"  name="phone" class="form-control" placeholder="11位电话号码" id="phone" maxlength="11">
+		                          </div>
+								  
+								  <div class="form-group">
+								      <label  class="control-label">权限:</label>
+								      <select class="show-tick form-control"   data-live-search="true" name="priority" id="priority">
+								          <option class="form-control" th:value="0">普通用户</option>
+								          <option class="form-control" th:value="1">管理员</option>
+								          <option class="form-control" th:value="-1">封停</option>
+								      </select>
+								  </div>
+
+								  <div class="form-group">
+									  <label  class="control-label">密码:</label>
+									  <input  type="text" name="password" class="form-control"  id="password">
+								  </div>
+
+		      
+		                      </div>
+		                      <div class="modal-footer">
+		                          <button type="submit" class="btn btn-primary" >修改</button>
+		                          <button type="button" class="btn btn-secondary" data-dismiss="modal" >取消</button>
+		                      </div>
+		                  </form>
+			   
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+		
+		<script>
+		    // 修改按钮    jquery	username ="{{user.username}}" gender="{{user.gender}}" age="{{user.age}}" phone = "{{user.phone}}" priority="{{user.priority}}"
+		    $(".edit").on("click", function() {
+		        $("#userid").val($(this).attr("userid"));
+				$("#username").val($(this).attr("username"));
+				$("#password").val($(this).attr("password"));
+		        $("#gender").val($(this).attr("gender"));	//
+		        $("#age").val($(this).attr("age"));	//
+		        $("#phone").val($(this).attr("phone"));
+		        $("#priority").val($(this).attr("priority"));
+		    });
+			 
+			$(".del").on("click", function() {
+			    $("#duid").text($(this).attr("userid"));
+			});
+			
+			
+			$("#delbtn").click(function(){
+				var str = $("#duid").text();
+				
+				document.write("<form action=/Admin/user/delete method=post name=form1 style='display:none'>");
+				document.write("<input type=hidden name=userid value='"+str+"'/>");
+				document.write("</form>");
+				document.form1.submit();
+				alert(str+'已经删除');
+			})
+			
+			
+		</script>
+
+		
+	</body>
+</html>
