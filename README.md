@@ -12,7 +12,8 @@
 ├─ml-job	         // 机器学习代码
 ├─spark-job        // spark 实时计算代码和离线分析代码
 ├─sql			         // 数据库结构及数据sql文件
-└─webapp		       // web服务
+├─myapp            //	springboot版本
+└─webapp		       // djagno 版本
 ```
 
 
