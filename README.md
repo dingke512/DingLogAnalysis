@@ -13,7 +13,10 @@
 ├─spark-job      // spark 实时计算代码和离线分析代码
 ├─sql			       // 数据库结构及数据sql文件
 ├─myapp          //	springboot版本
-└─webapp		     // djagno 版本
+├─webapp		     // djagno 版本
+├─environment.docx　　//　运行环境配置
+├─runbook.docx　　　　//　系统操作说明书
+└─solution.docx　　　//　相关问题解决方案
 ```
 
 
@@ -88,7 +91,7 @@
 
 1、离线分析计算结果已经计算完成，导入`sql`打开系统即可查看
 
-2、<font color="#ff0000">`如需自己运行`</font>：
+2、## <font color="#ff0000">`如需自己运行`</font>：
 
 ​		Spark SQL指标分析代码：`MyJob` 里面也包含了sparksql清洗导出csv的代码，导出后需要整理到一个文件夹
 
