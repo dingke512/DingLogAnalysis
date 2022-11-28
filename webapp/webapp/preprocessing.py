@@ -3,7 +3,7 @@ import os
 import time
 from webapp import settings
 from webapp.db_conn import *
-
+from webapp.db_conn import dbname
 
 # 整体趋势数据处理
 def data_trend(start='20060801', end='20060831'):
@@ -152,7 +152,7 @@ def insert_userinfo(userid:str,username:str,gender:int,age:int,phone:str,image:s
 
 # 根据id删除所有信息
 def del_all(userid):
-    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database="dingke", charset="utf8")
+    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database=dbname, charset="utf8")
     cursor = connect.cursor()
     try:
         image = mysql_query_one("select image from db_user_info where userid='%s'"%(userid))[0]

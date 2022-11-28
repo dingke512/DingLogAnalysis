@@ -1,10 +1,16 @@
+import os
 
 import redis
+import yaml
 from pymysql import Connect
 
+conf = os.getcwd() + "\\conf.yaml"
+fs = open(conf, encoding="UTF-8")
+datas = yaml.safe_load(fs)
+dbname = datas['dbname']
 
 def mysql_query_all(sql_text):
-    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database="dingke", charset="utf8")
+    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database=dbname, charset="utf8")
     cursor = connect.cursor()
     cursor.execute(sql_text)
     data = cursor.fetchall()
@@ -14,7 +20,7 @@ def mysql_query_all(sql_text):
 
 
 def mysql_query_one(sql_text):
-    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database="dingke", charset="utf8")
+    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database=dbname, charset="utf8")
     cursor = connect.cursor()
     cursor.execute(sql_text)
     data = cursor.fetchone()
@@ -24,7 +30,7 @@ def mysql_query_one(sql_text):
 
 
 def use_one(sql_text):
-    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database="dingke", charset="utf8")
+    connect = Connect(host="127.0.0.1",port=3306,user="root", password="123456", database=dbname, charset="utf8")
     cursor = connect.cursor()
     cursor.execute(sql_text)
     connect.commit()

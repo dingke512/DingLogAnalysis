@@ -8,5 +8,7 @@ hadoop:
 # 网页主页头部信息展示
 head:
   visual: ture
-  text: 广西科技师范学院2022届本科毕业设计
+  text: 2022届本科毕业设计
 
+# 数据库名称
+dbname: dingke
