@@ -7,12 +7,16 @@
 该系统使用Flume将用户的实时搜索日志数据采集到Kafka，再使用Flume拉取Kafka将采集的源数据存储到HDFS，同时使用Spark Streaming消费Kafka进行计算分析，对于离线数据使用Spark SQL分析计算，以及使用机器学习等手段挖掘将计算结果存储MySQL，使用django进行web系统开发，使用Echarts对计算结果进行可视化展示。
 
 ```yacas
-├─flume-conf       // Flume配置文件
-├─simulate         // 日志模拟文件
-├─ml-job	         // 机器学习代码
-├─spark-job        // spark 实时计算代码和离线分析代码
-├─sql			         // 数据库结构及数据sql文件
-└─webapp		       // web服务
+├─flume-conf     // Flume配置文件
+├─simulate       // 日志模拟文件
+├─ml-job	       // 机器学习代码
+├─spark-job      // spark 实时计算代码和离线分析代码
+├─sql			       // 数据库结构及数据sql文件
+├─myapp          //	springboot版本
+├─webapp		     // djagno 版本
+├─environment.docx　　//　运行环境配置
+├─runbook.docx　　　　//　系统操作说明书
+└─solution.docx　　　//　相关问题解决方案
 ```
 
 
@@ -58,7 +62,7 @@
 
 3、启动Kafka  `./bin/kafka-server-start.sh config/server.properties`
 
-​	 需要自己创建两个topic   weblog-spark-topic；weblog-sink-topic
+​	 需要自己创建weblog-spark-topic  weblog-sink-topic  两个 topic  
 
 ​	`kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic weblog-spark-topic`
 
@@ -66,9 +70,7 @@
 
 ​	 查看`kafka topic`：`kafka-topics.sh --zookeeper localhost:2181 --list`
 
-​	
-
-4、启动Flume ：分别启动A1和A3 ，A1负责监控文件，A3负责拉取kafka上传HDFS备份
+4、启动Flume ：分别启动a1和a3 ，A1负责监控文件，A3负责拉取kafka上传HDFS备份
 
 ​	`flume-ng agent --name a1 --conf $FLUME_HOME/conf --conf-file $FLUME_HOME/conf/file-kafka.conf -Dflume.root.logger=INFO, console`
 
@@ -80,30 +82,33 @@
 
 ### 实时计算
 
-1、启动spark streaming ：IDEA打开`StreamJob` 需要修改kafka的地址和端口
-2、打包jar使用 `spark-submit`提交Job
+1、启动spark streaming ：IDEA打开`StreamJob` 需要修改kafka的地址和端口以及Redis的host port
+
 
 ## 离线分析
 
-1、离线分析计算结果已经计算完成，导入`sql`打开系统即可查看
+1、离线分析计算结果已经计算完成，导入`sql`打开系统即可使用
 
-2、<font color="#ff0000">`如需自己运行`</font>：
+2、<font color="#ff0000">##`如需自己运行`</font>：
 
-​		Spark SQL指标分析代码：`MyJob` 里面也包含了sparksql清洗导出csv的代码，导出后需要整理到一个文件夹
+​		Spark SQL指标分析：`MyJob`包含了sparksql清洗导出csv
 
-​		机器学习代码：
+​		机器学习：
 
-​			LDA主题聚类代码：`lda_job.py` 需要修改文件路径
+​			LDA：`lda_job.py` 
 
-​			TextRank：`keywords_jieba.py` 需要修改文件路径
+​			TextRank：`keywords_jieba.py` 
 
-## 系统开发及可视化
+## Web可视化
 
 1、导入`mysql`数据库 ，sql文件在目录中，数据库名为`dingke`
 
-2、pycharm 打开 `webapp`  使用 ``python manager.py runserver`` 启动项目
+2、运行django项目 `webapp`  启动命令： ``python manager.py runserver`` 注：需要求该项目中conf.yaml文件配置自己的hadoop地址
+
+   myapp -- springboot版本 ，修改yaml hadoop地址即可，一个BUG：资源监控不可用
 
 
+Email: dingke00512@163.com      You can consult me if you have any problems
 
 
 
