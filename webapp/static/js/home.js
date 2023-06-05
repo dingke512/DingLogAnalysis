@@ -12,9 +12,9 @@
 		$("#child-page").animate({height:'100%'});
 		
 		//刷新子页面调整iframe echarts图表大小
-		setTimeout(function(){ 
+		setTimeout(function(){
 			 // $("#myframe").contents().find("#V_ORGID").val('111');
-			 
+
 			document.getElementById('child-page').contentWindow.location.reload(true);
 		}, 380);
 		//等待刷新完成，设置背景
@@ -30,7 +30,7 @@
 	//显示
 	$("#btnb").click(function(){
 		$("#btnb").animate({left:'-50px'});
-		$("#left-nav").delay(100).animate({left:'0'});
+		$("#left-nav").animate({left:'0'});
 		$("#head-nav").animate({top:'0'});
 		$("#right-box").animate({width:'85%'});
 		$("#child-page").animate({height:'94%'});
@@ -41,6 +41,7 @@
 		
 							
 		});
+
 	//左侧菜单	
 	var Accordion = function(el, multiple) {
 	    this.el = el || {};

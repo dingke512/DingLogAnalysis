@@ -16,7 +16,7 @@ object StreamingJob {
     Logger.getLogger("org.apache.spark").setLevel(Level.OFF)
     Logger.getLogger("org.apache.kafka.clients.consumer").setLevel(Level.OFF)
     val kafkaParams = Map[String, Object](
-      "bootstrap.servers" -> "192.168.66.149:9092",
+      "bootstrap.servers" -> "192.168.66.156:9092",
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "test",

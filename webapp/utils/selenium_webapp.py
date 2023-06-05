@@ -13,12 +13,15 @@ options.add_experimental_option('useAutomationExtension', False)
 driver = webdriver.Chrome(options=options, executable_path='D:\chromedriver.exe')
 # 最大等待时长   每隔半秒查看返回结果
 
-driver.get("http://127.0.0.1:8000")
+driver.get("http://www.baidu.com")
 
-userid = driver.find_element(By.ID,"userid")
-password = driver.find_element(By.ID,"password")
-submit = driver.find_element(By.ID,"btnLogin")
-# # 输入
-userid.send_keys(1646616219006)
-password.send_keys(123456)
-submit.click()
+
+input_text = driver.find_element(By.ID,"kw")
+input_text.send_keys("hello world")
+# userid = driver.find_element(By.ID,"userid")
+# password = driver.find_element(By.ID,"password")
+# submit = driver.find_element(By.ID,"btnLogin")
+# # # 输入
+# userid.send_keys(1646616219006)
+# password.send_keys(123456)
+# submit.click()
